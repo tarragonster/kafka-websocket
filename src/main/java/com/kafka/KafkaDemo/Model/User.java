@@ -11,6 +11,10 @@ public class User {
         this.salary = salary;
     }
 
+    public User() {
+        // Default constructor for jackson
+    }
+
     public String getName() {
         return name;
     }
