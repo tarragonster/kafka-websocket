@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     @Autowired
-    KafkaTemplate<String, User> kafkaTemplate;
+    KafkaTemplate<String, User> kafkaUserTemplate;
 
     private static final String TOPIC = "Kafka_Example_Json";
 
     @GetMapping("/publish/{message}")
     public String post(@PathVariable("message") final String message){
 
-        kafkaTemplate.send(TOPIC, new User(message, "IT","3000F"));
+        kafkaUserTemplate.send(TOPIC, new User(message, "IT","3000F"));
 
         return "published successfully";
     }
@@ -25,7 +25,7 @@ public class UserController {
     @PostMapping("/publish/{message}")
     public String producing(@PathVariable("message") final String message){
 
-        kafkaTemplate.send(TOPIC, new User(message, "IT","3000F"));
+        kafkaUserTemplate.send(TOPIC, new User(message, "IT","3000F"));
 
         return "published successfully";
     }
